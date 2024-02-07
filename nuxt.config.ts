@@ -5,7 +5,7 @@ import inject from '@rollup/plugin-inject'
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  vite: {plugins: [nodePolyfills()],define: { 'process.env': {} },
+  vite: { plugins: process.env.NODE_ENV === 'development' ? [nodePolyfills()] : [], define: { 'process.env': {} },
   build: {
     sourcemap: false, // with true the app doesn't build
     minify: 'terser',
